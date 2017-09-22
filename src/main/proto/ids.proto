@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package com.finnetlimited.automyze.protobuf;
+option java_package = "com.finnetlimited.automyze.protobuf";
+
+message VRMRequest {
+  string vrm = 1;
+}
+
+enum IDSResponseStatus {
+  OK = 0;
+  INVALID_VRM = 1;
+}
+
+message IDSVehicleDataLite {
+  string vrm = 1;
+  string make = 2;
+  string model = 3;
+  string range = 4;
+  string fuel_type = 5;
+  string gearbox = 6;
+  string color = 7;
+  int32 doors = 8;
+  int32 co2_emission = 9;
+  int32 reg_year = 10;
+  int64 first_reg_timestamp = 11;
+}
+
+message IDSVehicleResponseLite {
+  IDSResponseStatus status = 1;
+  IDSVehicleDataLite data = 2;
+}
+
+
+service IDSDatashare {
+  rpc GetVehicleByVRM(VRMRequest) returns (IDSVehicleResponseLite) {}
+}
