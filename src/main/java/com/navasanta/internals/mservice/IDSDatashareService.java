@@ -1,7 +1,9 @@
 package com.navasanta.internals.mservice;
 
-import com.finnetlimited.automyze.protobuf.IDSDatashareGrpc;
-import com.finnetlimited.automyze.protobuf.Ids;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
+import com.navasanta.internals.protobuf.IDSDatashareGrpc;
+import com.navasanta.internals.protobuf.Ids;
 import io.grpc.stub.StreamObserver;
 import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +41,13 @@ public class IDSDatashareService extends IDSDatashareGrpc.IDSDatashareImplBase {
 
     System.out.println(dataLite2.toString());
 
+    try {
+      System.out.println(JsonFormat.printer().print(dataLite2));
+    } catch (InvalidProtocolBufferException e) {
+      e.printStackTrace();
+    }
 
-    stringRepository.saveVehicle(dataLite);
+    stringRepository.saveVehicleJson(dataLite);
 
     Ids.IDSVehicleDataLite dataLite3 = stringRepository.getVehicle("MC03KLS");
 

@@ -1,6 +1,6 @@
 package com.navasanta.internals.mservice;
 
-import com.finnetlimited.automyze.protobuf.Ids;
+import com.navasanta.internals.protobuf.Ids;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;

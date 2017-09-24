@@ -1,9 +1,9 @@
 package com.navasanta.internals.mservice;
 
-import com.finnetlimited.automyze.protobuf.IDSDatashareGrpc;
-import com.finnetlimited.automyze.protobuf.Ids;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.protobuf.Message;
+import com.navasanta.internals.protobuf.IDSDatashareGrpc;
+import com.navasanta.internals.protobuf.Ids;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
