@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package com.finnetlimited.automyze.protobuf;
+option java_package = "com.navasanta.internals.protobuf";
+
+message VRMRequest {
+  string vrm = 1;
+}

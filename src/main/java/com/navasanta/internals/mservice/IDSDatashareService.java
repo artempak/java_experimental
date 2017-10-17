@@ -2,6 +2,7 @@ package com.navasanta.internals.mservice;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
+import com.navasanta.internals.protobuf.Common;
 import com.navasanta.internals.protobuf.IDSDatashareGrpc;
 import com.navasanta.internals.protobuf.Ids;
 import io.grpc.stub.StreamObserver;
@@ -21,12 +22,13 @@ public class IDSDatashareService extends IDSDatashareGrpc.IDSDatashareImplBase {
   private IDSStringRepository stringRepository;
 
   @Override
-  public void getVehicleByVRM(Ids.VRMRequest request, StreamObserver<Ids.IDSVehicleResponseLite> responseObserver) {
+  public void getVehicleByVRM(Common.VRMRequest request, StreamObserver<Ids.IDSVehicleResponseLite> responseObserver) {
 
     Ids.IDSVehicleDataLite dataLite = Ids.IDSVehicleDataLite.newBuilder()
         .setVrm("MC03KLS")
         .setMake("PEUGEOT")
         .setModel("HATCHBACK 206")
+        .setCo2Emission(123)
         .build();
     Ids.IDSVehicleResponseLite responseLite = Ids.IDSVehicleResponseLite.newBuilder()
         .setStatus(Ids.IDSResponseStatus.OK)

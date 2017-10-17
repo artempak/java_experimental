@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package com.finnetlimited.automyze.protobuf;
+option java_package = "com.navasanta.internals.protobuf";
+
+import "common.proto";
+
+enum DvlaResponseStatus {
+  DVLA_OK = 0;
+  DVLA_BAD_REQUEST = 1;
+  DVLA_NOT_FOUND = 2;
+  DVLA_REQUEST_LIMIT = 3;
+  DVLA_SERVER_ERROR = 4;
+}
+
+message DvlaData {
+  string vrm = 1;
+  string make = 2;
+  string color = 3;
+  string fuel_type = 4;
+  int32 engine_capacity = 5;
+  int32 co2_emissions = 6;
+  int32 year_of_manufacture = 7;
+  string month_of_first_registration = 8;
+  string wheel_plan = 9;
+  string type_approval = 10;
+  string mot_expiry_date = 11;
+  string mot_status = 12;
+  string tax_due_date = 13;
+  string tax_status = 14;
+  bool marked_for_export = 15;
+}
+
+message DvlaDataResponse {
+  DvlaResponseStatus status = 1;
+  DvlaData data = 2;
+}
+
+service DvlaInternalService {
+  rpc GetDvlaDataByVRM(VRMRequest) returns (DvlaDataResponse) {}
+}

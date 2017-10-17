@@ -1,11 +1,10 @@
 syntax = "proto3";
 
+import "common.proto";
+
 package com.finnetlimited.automyze.protobuf;
 option java_package = "com.navasanta.internals.protobuf";
 
-message VRMRequest {
-  string vrm = 1;
-}
 
 enum IDSResponseStatus {
   OK = 0;

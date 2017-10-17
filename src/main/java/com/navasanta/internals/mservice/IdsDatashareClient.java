@@ -2,6 +2,7 @@ package com.navasanta.internals.mservice;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.protobuf.Message;
+import com.navasanta.internals.protobuf.Common;
 import com.navasanta.internals.protobuf.IDSDatashareGrpc;
 import com.navasanta.internals.protobuf.Ids;
 import io.grpc.ManagedChannel;
@@ -48,7 +49,7 @@ public class IdsDatashareClient {
   public void getDataBlocking(String vrm) {
     info("*** getDataBlocking: VRM={0}", vrm);
 
-    Ids.VRMRequest request = Ids.VRMRequest.newBuilder().setVrm(vrm).build();
+    Common.VRMRequest request = Common.VRMRequest.newBuilder().setVrm(vrm).build();
 
     Ids.IDSVehicleResponseLite response;
     try {
